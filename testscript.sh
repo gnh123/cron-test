@@ -21,13 +21,19 @@ function cron_1000() {
 
 function cron_10000() {
 	# 运行10000个任务
-	cron_inner "cronex" 1000
-	cron_inner "cron" 10000
+	echo "cron.10000(,,$3)"
+	cron_inner "cronex" 10000 "$3"
+	cron_inner "cron" 10000 "$3"
 }
 
 function cron_inner() {
 	PROCESS_NAME="$1"
 	NUMBER="$2"
+	DURATION="10s"
+	if [[ ! -z $3 ]];then
+		DURATION="$3"
+	fi
+
 	echo "number=$NUMBER"
 	SUBCOMMAND=`echo $PROCESS_NAME|grep cronex`
 
@@ -35,11 +41,11 @@ function cron_inner() {
 	if [[ ! -z $SUBCOMMAND ]]; then
 		recog_log "cronex" "antlabscronex.$NUMBER" &
 		PID="$!"
-		./crontest antlabscronex --count "$NUMBER" -d 10s &>/dev/null
+		./crontest antlabscronex --count "$NUMBER" -d "$DURATION" &>/dev/null
 	else
 		recog_log "cron" "cron.$NUMBER" &
 		PID="$!"
-		./crontest robfigcron --count "$NUMBER" -d 10s &>/dev/null
+		./crontest robfigcron --count "$NUMBER" -d "$DURATION" &>/dev/null
 	fi
 	kill $PID
 }
@@ -74,4 +80,4 @@ if [[ ! -z $1 ]];then
 fi
 
 rm *.log
-cron_10
+cron_10000 "" "" "100s"
