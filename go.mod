@@ -1,14 +1,17 @@
-module github.com/gnh123/crontest
+module github.com/guonaihong/crontest
 
 go 1.19
 
 require (
+	github.com/antlabs/cronex v0.0.1
 	github.com/guonaihong/clop v0.2.8
 	github.com/robfig/cron/v3 v3.0.1
 )
 
 require (
+	github.com/antlabs/stl v0.0.1 // indirect
 	github.com/antlabs/strsim v0.0.2 // indirect
+	github.com/antlabs/timer v0.0.8 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
 	github.com/go-playground/validator/v10 v10.10.1 // indirect

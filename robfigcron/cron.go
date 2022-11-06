@@ -5,7 +5,7 @@ import (
 	"time"
 
 	//"github.com/jakecoffman/cron"
-	"github.com/gnh123/crontest/model"
+	"github.com/guonaihong/crontest/model"
 	cron "github.com/robfig/cron/v3"
 )
 
