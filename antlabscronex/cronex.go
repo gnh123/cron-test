@@ -2,7 +2,6 @@ package antlabscronex
 
 import (
 	"fmt"
-	"time"
 
 	"github.com/antlabs/cronex"
 	"github.com/guonaihong/crontest/model"
@@ -24,9 +23,6 @@ func (r *AntlabsCronex) SubMain() {
 		fmt.Println(err)
 	}
 
-	// Inspect the cron job entries' next and previous run times.
-	//inspect(c.Entries())
-	//c.Stop() // Stop the s
-	time.Sleep(time.Second * 1000)
+	r.Sleep()
 	c.Stop()
 }

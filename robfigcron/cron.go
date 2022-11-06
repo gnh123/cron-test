@@ -2,7 +2,6 @@ package robfigcron
 
 import (
 	"fmt"
-	"time"
 
 	//"github.com/jakecoffman/cron"
 	"github.com/guonaihong/crontest/model"
@@ -31,5 +30,5 @@ func (r *Robfigcron) SubMain() {
 	// Inspect the cron job entries' next and previous run times.
 	//inspect(c.Entries())
 	//c.Stop() // Stop the s
-	time.Sleep(time.Second * 1000)
+	r.Sleep()
 }
