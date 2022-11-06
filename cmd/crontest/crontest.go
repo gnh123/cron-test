@@ -7,8 +7,10 @@ import (
 )
 
 type crontest struct {
+	// 子命令, 会调用该结构的SubMain函数
 	antlabscronex.AntlabsCronex `clop:"subcommand" usage:"github.com/antlabs/cronex"`
-	robfigcron.Robfigcron       `clop:"subcommand" usage:"github.com/robifg/cron"`
+	// 子命令, 会调用该结构的SubMain函数
+	robfigcron.Robfigcron `clop:"subcommand" usage:"github.com/robifg/cron"`
 }
 
 func main() {

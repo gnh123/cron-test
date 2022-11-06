@@ -19,7 +19,7 @@ func (r *AntlabsCronex) SubMain() {
 
 	var err error
 	for i := 0; i < r.Count; i++ {
-		_, err = c.AddFunc("* * * * *", func() { fmt.Println("Every Second") })
+		_, err = c.AddFunc(r.Crontab, func() { fmt.Println("Every Second") })
 		fmt.Println(err)
 	}
 

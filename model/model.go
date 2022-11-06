@@ -6,7 +6,7 @@ import (
 )
 
 type CoreOpt struct {
-	Crontab   string        `clop:"short;long" usage:"crontab"`
+	Crontab   string        `clop:"short;long" usage:"crontab" default:"* * * * * *"`
 	Count     int           `clop:"long" usage:"run count"`
 	Output    string        `clop:"long" usage:"output"`
 	Durations time.Duration `clop:"short;long" usage:"duration" default:"10s"`

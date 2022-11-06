@@ -23,8 +23,10 @@ func (r *Robfigcron) SubMain() {
 	// Funcs may also be added to a running Cron
 	var err error
 	for i := 0; i < r.Count; i++ {
-		_, err = c.AddFunc("* * * * *", func() { fmt.Println("Every Second") })
-		fmt.Println(err)
+		_, err = c.AddFunc(r.Crontab, func() { fmt.Println("Every Second") })
+		if err != nil {
+			panic(err.Error())
+		}
 	}
 
 	// Inspect the cron job entries' next and previous run times.
