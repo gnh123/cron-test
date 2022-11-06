@@ -1,8 +1,6 @@
 package antlabscronex
 
 import (
-	"fmt"
-
 	"github.com/antlabs/cronex"
 	"github.com/guonaihong/crontest/model"
 )
@@ -19,8 +17,10 @@ func (r *AntlabsCronex) SubMain() {
 
 	var err error
 	for i := 0; i < r.Count; i++ {
-		_, err = c.AddFunc(r.Crontab, func() { fmt.Println("Every Second") })
-		fmt.Println(err)
+		_, err = c.AddFunc(r.Crontab, func() { r.Func() })
+		if err != nil {
+			panic(err.Error())
+		}
 	}
 
 	r.Sleep()

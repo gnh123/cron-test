@@ -3,7 +3,7 @@ module github.com/guonaihong/crontest
 go 1.19
 
 require (
-	github.com/antlabs/cronex v0.0.2
+	github.com/antlabs/cronex v0.0.3
 	github.com/guonaihong/clop v0.2.8
 	github.com/robfig/cron/v3 v3.0.1
 )

@@ -54,12 +54,14 @@ function recog_log() {
 	PROCESS_NAME="$1"
 	FILE_NAME="$2"
 	echo "process name:($PROCESS_NAME), file name:($FILE_NAME)"
+	echo "ps aux |grep $PROCESS_NAME|grep -v grep|awk '{print \$3}'"
+	echo "ps aux |grep $PROCESS_NAME|grep -v grep|awk '{print \$4}'"
 	while :;do
 		cpu=`ps aux |grep $PROCESS_NAME|grep -v grep|awk '{print $3}'`
 		echo "`date`, $cpu">> "$FILE_NAME.cpu.log"
 		mem=`ps aux |grep $PROCESS_NAME|grep -v grep|awk '{print $4}'`
 		echo "`date`, $mem">> "$FILE_NAME.mem.log"
-		sleep 1
+		sleep 0.3
 	done
 }
 

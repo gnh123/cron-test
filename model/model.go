@@ -21,3 +21,10 @@ func (c *CoreOpt) OutputFunc() {
 func (c *CoreOpt) Sleep() {
 	time.Sleep(c.Durations)
 }
+
+func (c *CoreOpt) Func() {
+	if len(c.Output) > 0 {
+		fmt.Println(c.Output)
+		return
+	}
+}
