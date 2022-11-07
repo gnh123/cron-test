@@ -39,15 +39,15 @@ function cron_inner() {
 
 	echo ">$SUBCOMMAND"
 	if [[ ! -z $SUBCOMMAND ]]; then
-		recog_log "cronex" "antlabscronex.$NUMBER" &
-		PID="$!"
+		recog_log "antlabscronex" "antlabscronex.$NUMBER" &
+		PID_CRONEX="$!"
 		./crontest antlabscronex --count "$NUMBER" -d "$DURATION" &>/dev/null
 	else
 		recog_log "cron" "cron.$NUMBER" &
-		PID="$!"
+		PID_CRON="$!"
 		./crontest robfigcron --count "$NUMBER" -d "$DURATION" &>/dev/null
 	fi
-	kill $PID
+	kill $PID_CRONEX $PID_CRON
 }
 
 function recog_log() {
@@ -61,12 +61,12 @@ function recog_log() {
 		echo "`date`, $cpu">> "$FILE_NAME.cpu.log"
 		mem=`ps aux |grep $PROCESS_NAME|grep -v grep|awk '{print $4}'`
 		echo "`date`, $mem">> "$FILE_NAME.mem.log"
-		sleep 0.3
+		sleep 0.1
 	done
 }
 
 function exit_handler() {
-	kill $PID
+	kill $PID_CRONEX $PID_CRON
 	exit 0
 }
 
@@ -82,4 +82,4 @@ if [[ ! -z $1 ]];then
 fi
 
 rm *.log
-cron_10000 "" "" "100s"
+cron_10000 "" "" "10s"
